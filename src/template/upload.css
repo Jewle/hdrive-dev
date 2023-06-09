@@ -1,0 +1,162 @@
+body {
+    /*background-color: whitesmoke;*/
+    /*background-image: url("https://www.transparenttextures.com/patterns/lyonnette.png");*/
+    /*border-bottom: 0px solid black;*/
+    /*height: 450px;*/
+    /*display: flex;*/
+    /*justify-content:center;*/
+    /*align-items: center;*/
+}
+.uploader{
+    width: 90%;
+    margin-left: 10%;
+
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Wrapper Styles === */
+#FileUpload {
+    display: flex;
+    justify-content: center;
+}
+.wrapper {
+    margin: 30px;
+    padding: 10px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    border-radius: 10px;
+    background-color: #6a6666;
+    width: 612px;
+    color: white;
+    color: white;
+}
+
+/* === Upload Box === */
+.upload {
+    margin: 10px;
+    height: 85px;
+    border: 8px dashed white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5px;
+    z-index: 5;
+}
+.upload p {
+    margin-top: 12px;
+    line-height: 0;
+    font-size: 22px;
+    color: #0c3214;
+    letter-spacing: 1.5px;
+}
+.upload__button {
+    background-color: #e6f5e9;
+    border-radius: 10px;
+    color: white;
+    padding: 0px 8px 0px 10px;
+}
+.upload__button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* === Uploaded Files === */
+.uploaded {
+    position: relative;
+    width: 96%;
+    margin: 10px;
+    color: #fff600;
+    background-color: #6f8e9d;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    z-index: 100;
+}
+.uploader .file {
+    display: flex;
+    flex-direction: column;
+    width:73%
+
+
+}
+.file__name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+    padding: 10px 10px;
+    color: #0c3214;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+.fa-times:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+.fa-file-pdf {
+    padding: 15px;
+    font-size: 40px;
+    color: #0c3214;
+}
+.upload__target{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.upload__button{
+    background-color: #fafafa;
+}
+#file_input{
+    /*display: none;*/
+}
+
+.uploader__upload{
+    background-color: #e6f5e9;
+    padding: 5px;
+    outline: none;
+}
+.uploader__progress-bar{
+    width:100%;
+    padding: 10px;
+    margin-left: 15px;
+
+
+}
+.uploader__progress-bar .progress{
+    background-color: #c5bf12;
+
+    height: 15px;
+}
+.uploaded__cross{
+    position: absolute;
+    right: 9px;
+    top:9px
+}
+
+.uploading-file{
+    display: flex;
+    background-color: #fafafa;
+    border: none;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    min-height: 50px;
+    outline: none;
+    margin-bottom: 10px;
+    width: 75%;
+    margin: auto;
+    margin-left: 60px;
+    margin-top: 30px;
+}

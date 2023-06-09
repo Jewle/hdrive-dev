@@ -1,0 +1,90 @@
+.toolbar{
+    width: 100%;
+    padding: 10px;
+    background-color: #505050;
+    display: flex;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0px 10px 8px 0px rgb(28 29 30);
+
+}
+.toolbar__search{
+    width: 300px;
+    padding: 7px;
+    border: none;
+    outline: none;
+}
+.toolbar__view-container{
+    position: relative;
+    display:flex ;
+    /*justify-content: space-around;*/
+    align-items: center;
+}
+
+.search{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.dpdn-btn{
+    position: relative;
+    z-index: 100;
+    user-select: none;
+    text-align: center;
+    width: 250px;
+    padding: 5px;
+    color: #f1f1f1;
+    background-color: #8c8b8b;
+    box-shadow: 3px 3px 3px black;
+    text-transform: uppercase;
+}
+.dpdn-btn:hover{
+    transform: scale(1.01);
+    box-shadow: 5px 5px 3px black;
+    transition: 0.3s;
+}
+.dpdn-options{
+    position:absolute;
+    opacity: 0;
+    left: 0;
+    top: -70px;
+    width: 250px;
+    padding: 20px;
+    color: #f1f1f1;
+    background-color: #6d6c6c;
+    transition: 0.3s;
+}
+.dpdn-item{
+    padding: 15px;
+    border-bottom:1px solid white;
+}
+.dpdn-checkbox{
+    /*display: none;*/
+}
+.dpdn-active{
+    opacity: 1!important;
+    top:70px;
+    transition: 0.3s;
+}
+
+.user-widget{
+    color:white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.user-widget :before{
+    content: 'Account: ';
+    font-style: normal;
+    color:lightcoral;
+    font-weight: normal;
+}
+
+.toolbar-item{
+    margin-left: 20px;
+}

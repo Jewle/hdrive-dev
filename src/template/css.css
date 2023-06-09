@@ -1,0 +1,380 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+body{
+    background-color: #282c2c;
+    /*filter: blur(3px)*/
+}
+/*.global-blur{*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    filter: blur(3px);*/
+/*    z-index: 1000;*/
+/*    background: #000;*/
+/*    opacity: 0.5;*/
+/*   */
+/*}*/
+
+
+input.invisible-input{
+    padding: 0;
+    margin: 0;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+
+router-outlet{
+    flex-grow: 1;
+    height:100vh
+}
+.app{
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.main{
+
+    /*padding-top: 100px;*/
+    background-color: #282c2c ;
+    overflow-y: scroll;
+    height: 100vh;
+    transition: all 0.5s ease;
+    width: 90%;
+    margin-left: 10%;
+
+
+
+
+}
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 71px;
+    padding-bottom: 180px;
+}
+.for-rect{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.desc{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    transition: opacity 100ms;
+    display: flex;
+    font-size: 11px;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.desc ul{
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.file img{
+    width: 90%;
+    height: 150px;
+}
+.file:hover .desc{
+    opacity: 1;
+}
+.file{
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    background-color: #6a6666;
+    border: none;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    min-height: 50px;
+    outline: none;
+    width: 200px;
+    margin:50px;
+    height: 290px;
+    user-select: none;
+
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+}
+.file-foreground{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+}
+.file:hover .fa-cross{
+    opacity: 1;
+    transition: 0.3s;
+
+}
+.file:hover{
+    transform: scale(1.01);
+    box-shadow: 3px 3px 10px #565555;
+    transition: 0.3s;
+}
+.fa-cross{
+    top: 5px;
+    right: 6px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .5;
+}
+.loader p {
+    color: white;
+    opacity: 1;
+}
+
+.show{
+    position: relative;
+    list-style: none;
+    justify-content: center;
+    display: flex;
+}
+audio{
+    width:100%
+}
+.item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    border: 1px solid black;
+}
+
+.show1, .show2, .show3 {
+    position: absolute;
+}
+.show1{
+    top:23px;
+    left:0;
+}
+.show2{
+    top: 23px;
+    left: 56px;
+}
+
+.show3{
+    top:23px;
+    left:112px;
+}
+.show div{
+    display: none;
+}
+.item:hover+div{
+    display: block;
+}
+
+.item:nth-child(1):hover{
+    color:red
+}
+
+
+/*Меню*/
+
+/* скрываем чекбокс */
+#menu__toggle {
+    opacity: 0;
+}
+/* стилизуем кнопку */
+.menu__btn {
+    display: flex; /* используем flex для центрирования содержимого */
+    align-items: center;  /* центрируем содержимое кнопки */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+}
+.menu__btn > span::before {
+    content: '';
+    top: -8px;
+}
+.menu__btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+
+
+/* контейнер меню */
+/*.menu__box {*/
+/*    display: block;*/
+/*    position: fixed;*/
+/*    visibility: hidden;*/
+/*    top: 0;*/
+/*    left: -100%;*/
+/*    width: 300px;*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    padding: 80px 0;*/
+/*    list-style: none;*/
+/*    text-align: center;*/
+/*    background-color: #ECEFF1;*/
+/*    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);*/
+/*}*/
+/* элементы меню */
+/*.menu__item {*/
+/*    display: block;*/
+/*    padding: 12px 24px;*/
+/*    color: #333;*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    font-size: 20px;*/
+/*    font-weight: 600;*/
+/*    text-decoration: none;*/
+/*}*/
+/*.menu__item:hover {*/
+/*    background-color: #CFD8DC;*/
+/*}*/
+
+#menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu {
+    visibility: visible;
+    left: 0;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    transition-duration: .25s;
+}
+.menu__box {
+    transition-duration: .25s;
+}
+.menu__item {
+    transition-duration: .25s;
+}
+
+.btn-active{
+    background-color: green;
+    color:white
+}
+
+.btn-danger{
+    background-color: lightcoral;
+}
+
+.btn-success{
+    background-color: #27ae60;
+}
+
+.btn-primary{
+    background-color: #34495e;
+}
+.btn-warning{
+    background-color: #f1c40f;
+}
+
+.btn{
+    margin: 5px;
+    width: fit-content;
+    text-decoration: none;
+    padding: 7px;
+    display: block;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    cursor:pointer;
+    transition: 0.3s;
+}
+.btn:hover{
+    opacity: 0.8;
+}
+
+.file.observable{
+    background-color: #ffeedd;
+}
+.author-name{
+    margin:10px 0;
+    color: #34495e;
+}
+
+.paginator-placeholder{
+    height: 150px;
+    margin-top: 30px;
+}
+.file.selected{
+    opacity: 0.5;
+    background-color: lightblue;
+}
+.rect{
+    background: none;
+    /*height: 100px;*/
+    /*width: 5px;*/
+    border: 2px solid grey;
+}
+search-component,router-outlet{
+    padding: 1px;
+    display: block;
+    width: 100%;
+    min-height: 100px;
+}

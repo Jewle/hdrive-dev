@@ -1,0 +1,41 @@
+{
+  "name": "hdrive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development  --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "file-loader": "^6.2.0",
+    "fileloader": "^2.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "less": "^4.1.2",
+    "mini-css-extract-plugin": "^1.5.0",
+    "sass": "^1.49.9",
+    "scss": "^0.2.4",
+    "webpack": "^5.64.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "copy-to-clipboard": "^3.3.1",
+    "css-loader": "^5.2.7",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "randomstring": "^1.2.1",
+    "style-loader": "^2.0.0"
+  }
+}

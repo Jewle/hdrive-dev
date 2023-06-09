@@ -1,0 +1,9 @@
+.selection{
+    display: none;
+    background-color: #fff;
+    padding: 15px;
+
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
