@@ -1,3 +1,4 @@
+@import "~@fortawesome/fontawesome-free";
 @import "css.css";
 @import "menu.css";
 
@@ -12,7 +13,7 @@
 @import "modal.css";
 @import "paginaotr.css";
 @import "selection.css";
-@import "~@fortawesome/fontawesome-free";
+
 @import "media.css";
 
 

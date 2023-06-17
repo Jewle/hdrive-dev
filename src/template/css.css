@@ -378,3 +378,13 @@ search-component,router-outlet{
     width: 100%;
     min-height: 100px;
 }
+
+.fa-solid{
+    font-weight: 900;
+    font-family: 'Font Awesome 5 Free';
+}
+.fa-solid:before{
+    font-family: 'Font Awesome 5 Free';
+    color:lightseagreen;
+    font-weight: 900;
+}

@@ -1,9 +1,9 @@
 import {UrlConstructor} from "../../core/functions/url.constructor";
 
 export function HTML(changes=[],isLoading,token) {
-    console.log(changes)
+
     return `<div class="menu" hchange="${token}" >
-        <label for="toggle-menu">Show/Hide</label>
+        <label for="toggle-menu" class="toggle-menu-label"><i class="fa-solid fa-arrow-right"></i></label>
         <input type="checkbox" id="toggle-menu" class="menu-toggler">
         <ul class="menu__box">
             <li><a href="#drive/main">Main</a></li>
