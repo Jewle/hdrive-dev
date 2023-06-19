@@ -71,7 +71,7 @@ export default function createStore(reducer) {
         },
 
         getTestState(item=''){
-
+            console.log("TEST STATE", testState)
             if(item) return testState[item]
 
             return testState
@@ -82,6 +82,7 @@ export default function createStore(reducer) {
 
         },
         getState(){
+            console.log("STATE",state)
             return state
         },
         clearState(){

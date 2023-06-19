@@ -17,7 +17,14 @@ import {store} from "../../storage/store";
             return Promise.resolve({files,pages,cached:true})
         }
         page = page || 1
-        return  this.fetchCore.get(UrlConstructor.filesUrl('getAll', {page}))
+
+
+
+       return this.fetchCore.get(UrlConstructor.filesUrl('getAll', {page})).then(async (data)=>{
+            const observableFiles = await this.filesICanWatch()
+            data.files = [...data.files, ...observableFiles]
+            return data
+        })
     }
     getFile(id){
         const url = UrlConstructor.filesUrl('getOne')
@@ -41,7 +48,7 @@ import {store} from "../../storage/store";
     }
 
     filesICanWatch(){
-        console.log(this.hstore.getTestState())
+        // console.log(this.hstore.getTestState())
         const {filesToWatch:cachedData}=this.hstore.getTestState('filesReducer')
         if (cachedData.length>0){
             return Promise.resolve(cachedData)

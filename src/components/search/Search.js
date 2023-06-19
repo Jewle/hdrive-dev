@@ -46,7 +46,7 @@ export class Search extends Component{
 
     init() {
         const {user} = this.hstore.getTestState('userReducer')
-        this.$root.find('.user-widget').append(user.name)
+        this.$root.find('.user-widget').append(user)
         this.useState()
         this.dropDownOptions = this.$root.find('.dpdn-options')
         this.input = this.$root.find('input')
