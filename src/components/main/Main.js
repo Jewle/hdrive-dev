@@ -30,12 +30,17 @@ export class Main extends Component{
     }
     init() {
         this.routerSub = RouterEvent.subscribe('qParamsChanged', ({params,prevParams})=>{
-            const {page} = params
+            const {page,type} = params
             const {page:prevPage} = prevParams
            this.hstore.dispatch(filesPending({page}))
-            fileService.getFiles(page,this.hstore.getState(),false)
-                .then(this.mainFetch.bind(this))
+            fileService.chooseStream((streams)=>{
+               return type === 'observable' ? streams.filesICanWatch: streams.getFiles(page,this.hstore.getState(),false)
+            }).then(this.mainFetch.bind(this))
                 .catch(ErrorHandler.throwError)
+
+            // getFiles(page,this.hstore.getState(),false)
+            //     .then(this.mainFetch.bind(this))
+            //     .catch(ErrorHandler.throwError)
         })
         const {page} = Router.qParams()
         this.hstore.dispatch(filesPending({page}))

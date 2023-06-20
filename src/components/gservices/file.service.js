@@ -6,6 +6,10 @@ import {store} from "../../storage/store";
 
 
  class FileService {
+    STREAMS = {
+        getFiles:"getFiles",
+        filesICanWatch:"filesICanWatch"
+    }
     fetchCore = new FetchCore()
     hstore = store
     getFiles(page){
@@ -20,11 +24,12 @@ import {store} from "../../storage/store";
 
 
 
-       return this.fetchCore.get(UrlConstructor.filesUrl('getAll', {page})).then(async (data)=>{
-            const observableFiles = await this.filesICanWatch()
-            data.files = [...data.files, ...observableFiles]
-            return data
-        })
+       return this.fetchCore.get(UrlConstructor.filesUrl('getAll', {page}))
+        //    .then(async (data)=>{
+        //     const observableFiles = await this.filesICanWatch()
+        //     data.files = [...data.files, ...observableFiles]
+        //     return data
+        // })
     }
     getFile(id){
         const url = UrlConstructor.filesUrl('getOne')
@@ -43,12 +48,17 @@ import {store} from "../../storage/store";
            })
     }
 
+    chooseStream =(cb)=>{
+
+        return this[cb(this.STREAMS)]
+    }
+
     searchViewers(val,fileId){
         return this.fetchCore.post(API_SERVER+`main/searchviewers`, {val,fileId})
     }
 
     filesICanWatch(){
-        // console.log(this.hstore.getTestState())
+        console.log(this)
         const {filesToWatch:cachedData}=this.hstore.getTestState('filesReducer')
         if (cachedData.length>0){
             return Promise.resolve(cachedData)
