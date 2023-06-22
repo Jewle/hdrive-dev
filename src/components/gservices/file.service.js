@@ -50,7 +50,7 @@ import {store} from "../../storage/store";
 
     chooseStream =(cb)=>{
 
-        return this[cb(this.STREAMS)]
+        return cb()
     }
 
     searchViewers(val,fileId){
@@ -58,12 +58,11 @@ import {store} from "../../storage/store";
     }
 
     filesICanWatch(){
-        console.log(this)
         const {filesToWatch:cachedData}=this.hstore.getTestState('filesReducer')
         if (cachedData.length>0){
             return Promise.resolve(cachedData)
         }
-        return this.fetchCore.get(API_SERVER+'main/getfilestowatch')
+        return this.fetchCore.get(API_SERVER+'main/getfilestowatch').then((data)=>{return {files:data}})
     }
 
     searchFiles(query){
