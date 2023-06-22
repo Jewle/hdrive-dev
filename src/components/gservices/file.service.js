@@ -50,7 +50,7 @@ import {store} from "../../storage/store";
 
     chooseStream =(cb)=>{
 
-        return cb()
+        return cb.call(this)
     }
 
     searchViewers(val,fileId){
@@ -62,7 +62,11 @@ import {store} from "../../storage/store";
         if (cachedData.length>0){
             return Promise.resolve(cachedData)
         }
-        return this.fetchCore.get(API_SERVER+'main/getfilestowatch').then((data)=>{return {files:data}})
+        return this.fetchCore.get(API_SERVER+'main/getfilestowatch')
+            .then((data)=>{return {
+                files:data,
+                type:'observable'
+            }})
     }
 
     searchFiles(query){

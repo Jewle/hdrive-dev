@@ -3,7 +3,8 @@ const initialState = {
     filesToWatch: [],
     loading:true,
     page:null,
-    pages:null
+    pages:null,
+    type:'own'
 
 }
 
@@ -11,13 +12,14 @@ const initialState = {
 export function filesReducer(state=initialState,action) {
     switch (action.type) {
         case 'FILES_LOADED':{
-            const {files,pages,page} = action.payload
+            const {files,pages,page,type} = action.payload
             return {
                 ...state,
                 files,
                 pages,
                 page,
-                loading: false
+                loading: false,
+                type
             }
         }
 

@@ -9,7 +9,7 @@ export function HTML(changes=[],isLoading,token) {
             <li><a href="#drive/main">Main</a></li>
             <li><a href="#drive/uploader">Upload</a></li>
             <li><a href="#drive/folders">Folders</a></li>
-            <li><a href="#drive/main?type=observable">Observable Files</a></li>
+           
             <li data-role="logout" style="align-self: flex-end">Logout</li>
             
         </ul>

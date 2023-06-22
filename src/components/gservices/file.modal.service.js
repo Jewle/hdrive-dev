@@ -159,7 +159,6 @@ import {dateHandler} from "../../core/functions/date-handler";
         return (target,overlay,modalTemplate)=>{
             overlay.style.display = 'block'
             const modalBody= modalTemplate.querySelector('.modal-body .des')
-            console.log(modalBody)
 
             const img = document.createElement('img')
             fileService.preview(fileId).then(({uri:data})=>{
@@ -224,6 +223,9 @@ import {dateHandler} from "../../core/functions/date-handler";
          this.modalObject.provideSearchField({type:'text', className:'search-users', callback:this._searchUsers(fileId)})
          this.modalObject.init(this.$root.$el)
  }
+     _previewMode = async (fileId)=>{
+
+     }
 
      async show(data,qmode='normal'){
          await this.modes[this.mode](data)

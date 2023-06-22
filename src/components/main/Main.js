@@ -33,17 +33,16 @@ export class Main extends Component{
         this.routerSub = RouterEvent.subscribe('qParamsChanged', ({params,prevParams})=>{
             const {page,type} = params
             const {page:prevPage} = prevParams
-            console.log(type,page)
            this.hstore.dispatch(filesPending({page}))
            fileService.chooseStream(()=>{
-               return type==='observable' ? fileService.filesICanWatch() : fileService.getFiles(page,this.hstore.getState(),false)
+               return type==='observable'
+                   ? this.filesICanWatch()
+                   : this.getFiles(page,this.hstore.getState(),false)
            })
                .then(this.mainFetch.bind(this))
-            //     .catch(ErrorHandler.throwError)
+               .catch(ErrorHandler.throwError)
 
-            // getFiles(page,this.hstore.getState(),false)
-            //     .then(this.mainFetch.bind(this))
-            //     .catch(ErrorHandler.throwError)
+
         })
         const {page} = Router.qParams()
         this.hstore.dispatch(filesPending({page}))
@@ -63,7 +62,7 @@ export class Main extends Component{
     destroy() {
         this.emitter.emit('hidePaginator',true)
         this.emitter.emit('hideSelection',true)
-        this.routerSub.unsubscribe()
+        // this.routerSub.unsubscribe()
         return super.destroy();
     }
     onStateChanged() {
@@ -87,13 +86,13 @@ export class Main extends Component{
         fileContent.show()
         fileSpinner.hide()
     }
-    mainFetch({files,pages}) {
+    mainFetch({files,pages,type}) {
 
         this.isLoaded = true
         this.emitter.debounceEmit('filesLoaded', pages,500)
         let {page} = Router.qParams()
         page = page || '1'
-        this.hstore.dispatch(filesLoaded({files,pages,page}))
+        this.hstore.dispatch(filesLoaded({files,pages,page,type}))
 
     }
     static routable = true
