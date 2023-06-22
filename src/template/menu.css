@@ -42,3 +42,7 @@
     color: white;
     text-decoration: none;
 }
+
+.menu .menu-toggler{
+    display: none;
+}

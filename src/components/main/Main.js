@@ -29,13 +29,21 @@ export class Main extends Component{
         this.callUserFunction(target.data.role, target, ['close-modal','my'])
     }
     init() {
+        console.log('Main')
         this.routerSub = RouterEvent.subscribe('qParamsChanged', ({params,prevParams})=>{
-            const {page} = params
+            const {page,type} = params
             const {page:prevPage} = prevParams
+            console.log(type,page)
            this.hstore.dispatch(filesPending({page}))
-            fileService.getFiles(page,this.hstore.getState(),false)
-                .then(this.mainFetch.bind(this))
-                .catch(ErrorHandler.throwError)
+           fileService.chooseStream(()=>{
+               return type==='observable' ? fileService.filesICanWatch() : fileService.getFiles(page,this.hstore.getState(),false)
+           })
+               .then(this.mainFetch.bind(this))
+            //     .catch(ErrorHandler.throwError)
+
+            // getFiles(page,this.hstore.getState(),false)
+            //     .then(this.mainFetch.bind(this))
+            //     .catch(ErrorHandler.throwError)
         })
         const {page} = Router.qParams()
         this.hstore.dispatch(filesPending({page}))
@@ -80,6 +88,7 @@ export class Main extends Component{
         fileSpinner.hide()
     }
     mainFetch({files,pages}) {
+
         this.isLoaded = true
         this.emitter.debounceEmit('filesLoaded', pages,500)
         let {page} = Router.qParams()

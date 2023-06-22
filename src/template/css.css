@@ -355,7 +355,7 @@ audio{
 }
 .author-name{
     margin:10px 0;
-    color: #34495e;
+    color: #2fc36d;
 }
 
 .paginator-placeholder{
@@ -377,4 +377,14 @@ search-component,router-outlet{
     display: block;
     width: 100%;
     min-height: 100px;
+}
+
+.fa-solid{
+    font-weight: 900;
+    font-family: 'Font Awesome 5 Free';
+}
+.fa-solid:before{
+    font-family: 'Font Awesome 5 Free';
+    color:lightseagreen;
+    font-weight: 900;
 }

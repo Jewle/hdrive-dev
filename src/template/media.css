@@ -18,11 +18,19 @@
         width: 100%;
     }
     .menu{
-       width: 60%;
+         width: 60%;
         font-size: 1.5rem;
+        transform: translateX(-250px);
     }
-    .menu:has( .toggler-menu:checked){
-        font-size: 50px;
+    .toggle-menu-label{
+        align-self: flex-end;
+        position: relative;
+        left: 366px;
+        top: 18px;
+    }
+
+    .menu:has( .menu-toggler:checked){
+        transform: translateX(-1px)
 
     }
 }

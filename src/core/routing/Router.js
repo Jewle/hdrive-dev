@@ -65,7 +65,7 @@ export class Router {
 
        }
        catch (e) {
-            console.error(e)
+            console.warn(e)
            Router.redirect('hello/start')
        }
     }

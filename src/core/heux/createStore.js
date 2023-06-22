@@ -82,6 +82,7 @@ export default function createStore(reducer) {
 
         },
         getState(){
+
             return state
         },
         clearState(){
