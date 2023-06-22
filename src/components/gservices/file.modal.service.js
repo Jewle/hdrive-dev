@@ -9,14 +9,15 @@ import {dateHandler} from "../../core/functions/date-handler";
  class FileModal{
     modalObject = {}
     $root = {}
-    modes={
-
-    }
-    mode='normal'
+    // modes={
+    //
+    // }
+    mode='preview'
      constructor(){
         this.modes={
             normal:this._normalMode,
-            onlyViewers:this._onlyViewersMode
+            onlyViewers:this._onlyViewersMode,
+            preview:this._previewMode
         }
      }
      onDelete = new Function()
@@ -224,11 +225,34 @@ import {dateHandler} from "../../core/functions/date-handler";
          this.modalObject.init(this.$root.$el)
  }
      _previewMode = async (fileId)=>{
+        console.log('preview')
+         const currentFile =await fileService.getFile(fileId)
+         this.modalObject.buttons([
+             {
+                 title:'download',
+                 event:'download',
+                 className:'download btn btn-success',
+                 callback:()=>{this._download(fileId)},
+                 dataAttrs:[
+                     {k:'mevent',v:'download'},
+                     {k:'id', v:currentFile._id}]},
+         ])
+         this.modalObject.setData({fileId, mode:'preview'})
+         this.modalObject.dataList([
+             {title:'Size: '+sizeHandler(currentFile.size), className:'file-modal-size'},
+             {title:`Date: ${dateHandler(currentFile.uploadedAt)}`,className: 'file-modal-date'}
+         ])
+         this.modalObject.addBodyButtons([
+             {title:'Open in new tab', event:'tab', className:'file-viewer btn btn-primary', callback:this._newTab(fileId), dataAttrs:[{k:'mevent',v:'tab'}]},
 
+         ])
+         this.modalObject.imgSrc(SERVER_URL+currentFile.imgSrc)
+         this.modalObject.modalTitleProvide(currentFile.originalName)
+         this.modalObject.init(this.$root.$el)
      }
 
      async show(data,qmode='normal'){
-         await this.modes[this.mode](data)
+         await this.modes[qmode](data)
      }
 
 

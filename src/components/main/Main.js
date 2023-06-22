@@ -36,8 +36,8 @@ export class Main extends Component{
            this.hstore.dispatch(filesPending({page}))
            fileService.chooseStream(()=>{
                return type==='observable'
-                   ? this.filesICanWatch()
-                   : this.getFiles(page,this.hstore.getState(),false)
+                   ? fileService.filesICanWatch()
+                   : fileService.getFiles(page,this.hstore.getState(),false)
            })
                .then(this.mainFetch.bind(this))
                .catch(ErrorHandler.throwError)
@@ -77,11 +77,12 @@ export class Main extends Component{
         }
     }
     async showfileFunction(target){
-        console.log(target)
         super.removeEventListeners()
         const fileContent = target.closest('.file-content').hide()
         const fileSpinner = target.closest('.file').find('#fileSpinner').show()
-        await this.modal.show(target.data.id)
+        const type = target.data.type
+        const modalMode = type==='obs' ? 'preview' : 'normal'
+        await this.modal.show(target.data.id,modalMode)
 
         fileContent.show()
         fileSpinner.hide()
