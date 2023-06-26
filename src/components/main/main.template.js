@@ -52,10 +52,14 @@ function fileContent(c){
     const {type} = c
     return `
          <div class="file-content" data-name="${c.originalName}">
-               <div class="file-foreground" data-role='showFile' data-type="${c.authorName ? 'obs' : 'own'}" data-id="${c._id}" ></div> 
-               <img files="img" ${c.authorName && 'data-observe=observable'} data-id="${c._id}" data-role='showFile' src="${c.imgSrc}" alt="" class="preview">
+               <div 
+               class="file-foreground" 
+               data-role='showFile' 
+               data-type="${c.displayType ==='observable' ? 'obs' : 'own'}" data-id="${c._id}" >
+                </div> 
+               <img files="img" ${c.displayType ==='observable' && 'data-observe=observable'} data-id="${c._id}" data-role='showFile' src="${c.imgSrc}" alt="" class="preview">
                ${hIf(`<audio src="${UrlConstructor.filesUrl('static', c.urlUnencoded)}" controls></audio>`, type?.split('/')[0]==='audio')}
-               <p class="author-name">${(c.authorName && `From ${c.authorName}`) || ''}</p>
+               <p class="author-name">${(c.displayType ==='observable' && `From ${c.authorName}`) || ''}</p>
          </div>
     `
 }

@@ -36,8 +36,8 @@ export class Main extends Component{
            this.hstore.dispatch(filesPending({page}))
            fileService.chooseStream(function(){
                return type==='observable'
-                   ? fileService.filesICanWatch()
-                   : fileService.getFiles(page,this.hstore.getState(),false)
+                   ? this.filesICanWatch()
+                   : this.getFiles(page,this.hstore.getState(),false)
            })
                .then(this.mainFetch.bind(this))
                .catch(ErrorHandler.throwError)
