@@ -31,6 +31,9 @@ export function modalCore() {
         return `<button  ${dataAttrs} class="${button.className}">${button.title}</button>`
     }
     function createSearchField(sField){
+        if (Object.keys(sField).length<1){
+            return
+        }
         const dataAttrs = sField.dataAttrs ? sField.dataAttrs.map(dA => `data-${dA.k} = "${dA.v}" `).join('') : ''
         return `<input ${dataAttrs} class="${sField.className}" value="${sField.value || ''}" type="${sField.type}">`
     }
