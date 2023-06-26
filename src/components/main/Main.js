@@ -34,7 +34,7 @@ export class Main extends Component{
             const {page,type} = params
             const {page:prevPage} = prevParams
            this.hstore.dispatch(filesPending({page}))
-           fileService.chooseStream(()=>{
+           fileService.chooseStream(function(){
                return type==='observable'
                    ? this.filesICanWatch()
                    : this.getFiles(page,this.hstore.getState(),false)
