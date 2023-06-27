@@ -13,14 +13,15 @@ export default class ContextMenuService  {
         this.fileModal = fileModal
 
     }
-    run(target,params={files:'N'}){
+    run(target,params={files:'N', displayType:'own'}){
         this.menu.attach(target)
         if(target.data.role==='folder'){
             this.menu.content({
                 optionsArray:[{
                     role:'delete',
                     cb :_=>this.deleteFolder(target),
-                    title:'Delete'
+                    title:'Delete',
+                    hasToShow:params.displayType==='own'
                 },
                     {
                         role:'rename',
@@ -45,9 +46,9 @@ export default class ContextMenuService  {
         if(target.data.role==='file') {
             this.menu.content({
                 optionsArray: [
-                    {role:'show', title:'show', cb:_=>this.showFile(target)},
-                    {role:'remove', title: 'remove', cb:_=>this.deleteFile(target)},
-                    {role:'edit', title:'edit', cb:_=>this.editFile(target)}
+                    {role:'show', title:'show', cb:_=>this.showFile(target), },
+                    {role:'remove', title: 'remove', cb:_=>this.deleteFile(target), hasToShow:params.displayType==='own'},
+                    {role:'edit', title:'edit', cb:_=>this.editFile(target), hasToShow:params.displayType==='own'}
                 ],
 
             }).init()

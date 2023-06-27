@@ -34,10 +34,10 @@ export class Main extends Component{
             const {page,type} = params
             const {page:prevPage} = prevParams
            this.hstore.dispatch(filesPending({page}))
-           fileService.chooseStream(()=>{
+           fileService.chooseStream(function(){
                return type==='observable'
-                   ? fileService.filesICanWatch()
-                   : fileService.getFiles(page,this.hstore.getState(),false)
+                   ? this.filesICanWatch()
+                   : this.getFiles(page,this.hstore.getState(),false)
            })
                .then(this.mainFetch.bind(this))
                .catch(ErrorHandler.throwError)

@@ -52,10 +52,21 @@ function fileContent(c){
     const {type} = c
     return `
          <div class="file-content" data-name="${c.originalName}">
+<<<<<<< HEAD
                <div class="file-foreground" data-role='showFile' data-type="${c.displayType==='observable' ? 'obs' : 'own'}" data-id="${c._id}" ></div> 
                <img files="img" ${c.displayType==='observable' && 'data-observe=observable'} data-id="${c._id}" data-role='showFile' src="${c.imgSrc}" alt="" class="preview">
                ${hIf(`<audio src="${UrlConstructor.filesUrl('static', c.urlUnencoded)}" controls></audio>`, type?.split('/')[0]==='audio')}
                <p class="author-name">${(c.displayType==='observable' && `From ${c.authorName}`) || ''}</p>
+=======
+               <div 
+               class="file-foreground" 
+               data-role='showFile' 
+               data-type="${c.displayType ==='observable' ? 'obs' : 'own'}" data-id="${c._id}" >
+                </div> 
+               <img files="img" ${c.displayType ==='observable' && 'data-observe=observable'} data-id="${c._id}" data-role='showFile' src="${c.imgSrc}" alt="" class="preview">
+               ${hIf(`<audio src="${UrlConstructor.filesUrl('static', c.urlUnencoded)}" controls></audio>`, type?.split('/')[0]==='audio')}
+               <p class="author-name">${(c.displayType ==='observable' && `From ${c.authorName}`) || ''}</p>
+>>>>>>> e3c15011adf6aea8cb3a00d23a28a28e273fba7b
          </div>
     `
 }

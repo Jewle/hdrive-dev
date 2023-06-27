@@ -48,7 +48,7 @@ import {store} from "../../storage/store";
            })
     }
 
-    chooseStream =(cb)=>{
+    chooseStream(cb){
 
         return cb.call(this)
     }

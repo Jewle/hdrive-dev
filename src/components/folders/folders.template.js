@@ -5,6 +5,12 @@ export function HTML(changes='',isLoaded) {
 <div class="box" style="position: relative" >
     <button class="new-folder" data-role="rootfolder">+</button>
     <ul  class="directory-list droppable" hchange>
+            <li  data-role="observableFolder" class="folder observable-folder active">
+                Observable Folder
+                <ul>
+                    <li class="observable-file">File 1</li>
+                </ul>
+            </li>
             ${changes ? setChanges(changes) : folderSpinner()}
            
             

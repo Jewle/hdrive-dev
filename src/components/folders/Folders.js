@@ -26,7 +26,7 @@ export class Folders extends Component{
     async onContextmenu(e){
         const $target = $(e.target)
         e.preventDefault()
-        this.menuService.run($target)
+        this.menuService.run($target,{displayType:$target.data.role})
 
 
     }
@@ -34,6 +34,7 @@ export class Folders extends Component{
         event.stopPropagation()
         this.menu.off()
         const target = $(event.target)
+        console.log(target)
         this.callUserFunction(target.data.role,target)
         }
      onDragstart(e){
@@ -92,6 +93,10 @@ export class Folders extends Component{
 
         }
         this.openFolders.push({id:target.data.fid, isEmpty:!cnt.html})
+    }
+
+    observablefolderFunction(target){
+        target.css('toggle','active')
     }
     destroy() {
         this.menu.destroy()
