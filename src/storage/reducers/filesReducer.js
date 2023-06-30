@@ -4,7 +4,7 @@ const initialState = {
     loading:true,
     page:null,
     pages:null,
-    type:'own'
+    // displayType:'own'
 
 }
 
@@ -77,6 +77,13 @@ export function filesReducer(state=initialState,action) {
                 files:clonedFiles
             }
         }
+        // case 'FILES_SWITCH_DISPLAYTYPE':{
+        //     console.log(action.payload)
+        //     return {
+        //         ...state,
+        //         displayType:action.payload
+        //     }
+        // }
 
         default: return state
 

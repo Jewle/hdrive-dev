@@ -61,8 +61,7 @@ export class Item extends Component{
     }
 
     viewersFunction(target){
-        // const {file} = this.hstore.getTestState('itemReducer')
-        this.modal.show(this.file)
+        this.modal.show(this.file, 'onlyViewers')
     }
     deleteFunction(){
         const decision = confirm(`Do you want to delete ${this.file.originalName}`)

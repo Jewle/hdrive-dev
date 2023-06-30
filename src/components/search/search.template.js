@@ -7,19 +7,13 @@ export function HTML(changes=[]) {
             </div>
             <input type="text" class="toolbar__search toolbar-item">
              <button class="btn btn-success toolbar-item" data-role="search">Search</button>
-            <div class="toolbar__view-container toolbar-item" >
-                <div class="dpdn-btn show-files">
-                    <label data-role="show" for="check">Files from others</label>
-                </div>
-                <div class="dpdn-options toolbar-item" hchange >
-                    ${changes.map(fileToWatch).join('')}
-                </div>
-            </div>
+             <select  value="all" name="" id="" class="display-type">
+                <option  value="all">All</option>
+                <option  value="own">Own</option>
+                <option  value="obs">From Others</option>
+             </select>
+           
         </div>`
 }
 
-function fileToWatch(file={}) {
-    return `<div class="dpdn-item">
-       <a href="${UrlConstructor.filesUrl('publicView',{id:file._id})}">${file.originalName}</a>
-</div>`
-}
+

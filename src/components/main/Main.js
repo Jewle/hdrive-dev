@@ -25,39 +25,43 @@ export class Main extends Component{
         this.auth = authService
     }
     onClick(event){
+
         const target = $(event.target)
         this.callUserFunction(target.data.role, target, ['close-modal','my'])
+
     }
     init() {
-        console.log('Main')
-        this.routerSub = RouterEvent.subscribe('qParamsChanged', ({params,prevParams})=>{
-            const {page,type} = params
-            const {page:prevPage} = prevParams
-           this.hstore.dispatch(filesPending({page}))
-           fileService.chooseStream(function(){
-               return type==='observable'
-                   ? this.filesICanWatch()
-                   : this.getFiles(page,this.hstore.getState(),false)
-           })
-               .then(this.mainFetch.bind(this))
-               .catch(ErrorHandler.throwError)
+        const {displayType} = this.hstore.getTestState('filesDisplayReducer')
+        this.routerSub = RouterEvent.subscribe('qParamsChanged', ({params, prevParams}) => {
+            const {page, type} = params
+            const {page: prevPage} = prevParams
+            this.hstore.dispatch(filesPending({page}))
+            fileService.chooseStream(function () {
+                return type === 'observable'
+                    ? this.filesICanWatch()
+                    : this.getFiles(page, this.hstore.getState(), false)
+            })
+                .then(this.mainFetch.bind(this))
+                .catch(ErrorHandler.throwError)
 
 
         })
         const {page} = Router.qParams()
         this.hstore.dispatch(filesPending({page}))
-        fileModal.onDelete = (fileId)=>{
+        fileModal.onDelete = (fileId) => {
             this.hstore.dispatch(fileDelete({fileId}))
         }
-        fileModal.onEdit = (fileId,newTitle)=>{
-            this.hstore.dispatch(fileEdit({fileId,newTitle}))
+        fileModal.onEdit = (fileId, newTitle) => {
+            this.hstore.dispatch(fileEdit({fileId, newTitle}))
         }
-        this.modal=fileModal.init(modalCore(), this.$root)
-        // selectionRect(this.$root.$el,'.file')
-        fileService.getFiles((page || 1))
+        this.modal = fileModal.init(modalCore(), this.$root)
+
+        fileService.chooseStream(function () {
+            return displayType === 'all' ? this.getFiles((page || 1)) : this.filesICanWatch()
+        })
             .then(this.mainFetch.bind(this))
             .catch(ErrorHandler.throwError)
-         super.init();
+        super.init();
     }
     destroy() {
         this.emitter.emit('hidePaginator',true)
@@ -94,6 +98,14 @@ export class Main extends Component{
         let {page} = Router.qParams()
         page = page || '1'
         this.hstore.dispatch(filesLoaded({files,pages,page,type}))
+        selectionRect(this.$root.$el,'.file').then(({onStop,onSelected})=>{
+            onSelected((data)=>{
+                this.emitter.emit('showSelection', data)
+            })
+            onStop(()=>{
+                this.emitter.emit('hideSelection')
+            })
+        })
 
     }
     static routable = true

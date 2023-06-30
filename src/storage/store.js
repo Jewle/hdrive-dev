@@ -3,6 +3,7 @@ import {uploadReducer} from "./reducers/uploadReducer";
 import createStore from "../core/heux/createStore";
 import {itemReducer} from "./reducers/itemReducer";
 import userReducer from "./reducers/userReducer";
+import filesDisplayReducer from "./reducers/filesDisplayReducer";
 
 export const store = createStore()
     .combineReducers([
@@ -10,6 +11,7 @@ export const store = createStore()
         {name:'filesReducer', func:filesReducer},
         {name:'uploadReducer', func:uploadReducer},
         {name:'itemReducer', func:itemReducer},
+        {name:'filesDisplayReducer', func:filesDisplayReducer}
 
     ])
 

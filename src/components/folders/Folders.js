@@ -30,6 +30,10 @@ export class Folders extends Component{
 
 
     }
+    refreshbuttonFunction(){
+        this.destroy()
+        this.init()
+    }
     onClick(event){
         event.stopPropagation()
         this.menu.off()
@@ -108,6 +112,7 @@ export class Folders extends Component{
         return super.destroy();
     }
     init() {
+
         this.spinner = this.$root.find('.lds-hourglass')
         this.overlay = this.$root.find('.overlay-forSpinner')
         this.menu = new MenuService('.hmenu')

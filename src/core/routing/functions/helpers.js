@@ -19,7 +19,7 @@ export function queryParams() {
     return obj
 }
 
-export function hash(str){
+export function hash(str,getCompleteString=false){
 
     if (str){
         if (str[0]==='#'){
@@ -30,5 +30,5 @@ export function hash(str){
             window.location.hash = str
         return str
     }
-    return  window.location.hash.split('?').shift()
+    return getCompleteString ?  window.location.hash :  window.location.hash.split('?').shift()
 }

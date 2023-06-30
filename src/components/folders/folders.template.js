@@ -4,13 +4,11 @@ export function HTML(changes='',isLoaded) {
 
 <div class="box" style="position: relative" >
     <button class="new-folder" data-role="rootfolder">+</button>
+    <button data-role="refreshbutton" class="refresh-button">
+         <i data-role="refreshbutton" class="fa-solid fa-arrows-rotate"></i>
+    </button>
     <ul  class="directory-list droppable" hchange>
-            <li  data-role="observableFolder" class="folder observable-folder active">
-                Observable Folder
-                <ul>
-                    <li class="observable-file">File 1</li>
-                </ul>
-            </li>
+            
             ${changes ? setChanges(changes) : folderSpinner()}
            
             

@@ -203,11 +203,11 @@ import {dateHandler} from "../../core/functions/date-handler";
          this.modalObject.init(this.$root.$el)
      }
      _onlyViewersMode = async (file)=>{
-        const fileId = file._id
+
          this.modalObject.modalTitleProvide(file.originalName)
          this.modalObject.buttons([
-             {title:'', hidden:true, event:'setViewer', className:'', callback:this._applyViewer(fileId), dataAttrs:[{}]},
-             {title:'', hidden:true, event:'removeViewer', className:'', callback:this._removerViewer(fileId), dataAttrs:[{}]},
+             {title:'', hidden:true, event:'setViewer', className:'', callback:this._applyViewer(file._id), dataAttrs:[{}]},
+             {title:'', hidden:true, event:'removeViewer', className:'', callback:this._removerViewer(file._id), dataAttrs:[{}]},
          ])
 
          if (file.type==='docx' || file.type==='doc' || file.type.search('document')!==-1){
@@ -216,12 +216,12 @@ import {dateHandler} from "../../core/functions/date-handler";
                      hidden:false,
                      event:'preview',
                      className:'btn btn-primary',
-                     callback:this._preview(fileId),
+                     callback:this._preview(file._id),
                      dataAttrs:[{k:'mevent',v:'preview'}]
                  }]
              )
          }
-         this.modalObject.provideSearchField({type:'text', className:'search-users', callback:this._searchUsers(fileId)})
+         this.modalObject.provideSearchField({type:'text', className:'search-users', callback:this._searchUsers(file._d)})
          this.modalObject.init(this.$root.$el)
  }
      _previewMode = async (fileId)=>{

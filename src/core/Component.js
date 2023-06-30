@@ -17,7 +17,7 @@ export class Component extends DomListener {
 
     }
      init(){
-
+        // this.destroy()
         if (this.changeDetectionOfReducer){
             this.hstore.onReducerStateChanged(this.changeDetectionOfReducer,stateItem=>{
                 const field = stateItem[this.extractFromReducer]

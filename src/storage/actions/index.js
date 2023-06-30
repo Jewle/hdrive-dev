@@ -69,6 +69,15 @@ function userLeft() {
     }
 }
 
+function switchDisplayType(payload) {
+
+    return {
+        type:'DISPLAY_TYPE_SWITCH',
+        payload
+    }
+
+}
+
 export {
     filesLoaded,
     fileEdit,
@@ -81,6 +90,7 @@ export {
     itemFilePending,
     userEntered,
     userLeft,
+    switchDisplayType
 
 
 }

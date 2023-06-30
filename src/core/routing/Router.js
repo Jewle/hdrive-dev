@@ -22,7 +22,11 @@ export class Router {
     }
 
     init(){
-        this.options.initialRoute && hash(this.options.initialRoute)
+        console.log(hash())
+        this.options.initialRoute && !hash()
+            ? hash(this.options.initialRoute)
+            : hash(hash(null,true))
+
         this.handler()
        window.addEventListener('hashchange', this.handler)
 
