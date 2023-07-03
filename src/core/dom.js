@@ -67,6 +67,7 @@ class DomExplorer {
     }
 
     off(event, cb) {
+
         this.$el.removeEventListener(event, cb)
         return this
     }

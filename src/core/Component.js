@@ -1,9 +1,10 @@
 
 
 import {DomListener} from "./DomListener";
+import SelectionLayer from "./SelectionLayer";
 
 
-export class Component extends DomListener {
+export class Component extends SelectionLayer {
     storeSubscribe = null
     constructor($root,options) {
         super($root,options)

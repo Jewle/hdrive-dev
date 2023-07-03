@@ -8,7 +8,7 @@ import ErrorHandler from "../../core/errorHandler/errorHandler";
 import {Router} from "../../core/routing/Router";
 import RouterEvent from "../../core/routing/RouterEvent";
 import {fileDelete, fileEdit, filesLoaded, filesPending} from "../../storage/actions";
-import selectionRect from "../../core/ui/selection-rect/selection-rect";
+
 export class Main extends Component{
     name = 'main'
     modal = null
@@ -55,12 +55,14 @@ export class Main extends Component{
             this.hstore.dispatch(fileEdit({fileId, newTitle}))
         }
         this.modal = fileModal.init(modalCore(), this.$root)
-
         fileService.chooseStream(function () {
             return displayType === 'all' ? this.getFiles((page || 1)) : this.filesICanWatch()
         })
             .then(this.mainFetch.bind(this))
             .catch(ErrorHandler.throwError)
+
+        this.attach(this.$root)
+        this.selectionInit()
         super.init();
     }
     destroy() {
@@ -98,14 +100,7 @@ export class Main extends Component{
         let {page} = Router.qParams()
         page = page || '1'
         this.hstore.dispatch(filesLoaded({files,pages,page,type}))
-        selectionRect(this.$root.$el,'.file').then(({onStop,onSelected})=>{
-            onSelected((data)=>{
-                this.emitter.emit('showSelection', data)
-            })
-            onStop(()=>{
-                this.emitter.emit('hideSelection')
-            })
-        })
+
 
     }
     static routable = true
